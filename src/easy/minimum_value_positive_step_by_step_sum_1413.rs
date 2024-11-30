@@ -1,25 +1,15 @@
 // 1413. Minimum Value to Get Positive Step by Step Sum
 // https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/description/
+// Time complexity: O(n)
+// Space complexity: O(1)
+
+// --------------------------------------------------
 
 #![allow(dead_code)]
 
 struct Solution;
 
 impl Solution {
-    /// This function calculates the minimum starting value such that the step-by-step sum
-    /// of the given list of integers is never less than 1.
-    ///
-    /// # Arguments
-    ///
-    /// * `nums` - A vector of integers representing the sequence of numbers.
-    ///
-    /// # Returns
-    ///
-    /// * An integer representing the minimum starting value to ensure the step-by-step sum is always positive.
-    ///
-    /// # Complexity
-    /// - Time: O(n)
-    /// - Space: O(1)
     pub fn min_start_value(nums: Vec<i32>) -> i32 {
         // Initialize min_val to 0 to keep track of the minimum value of the running total
         let mut min_val = 0;

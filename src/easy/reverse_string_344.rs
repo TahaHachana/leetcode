@@ -1,24 +1,21 @@
 // 344. Reverse String
 // https://leetcode.com/problems/reverse-string/description/
+// Time complexity: O(n)
+// Space complexity: O(1)
+
+// --------------------------------------------------
 
 #![allow(dead_code)]
 
 struct Solution;
 
 impl Solution {
-    /// Reverses the characters in the given vector `s` in place.
-    ///
-    /// # Arguments
-    ///
-    /// * `s` - A mutable reference to a vector of characters that will be reversed.
-    ///
-    /// # Complexity
-    /// - Time: O(n)
-    /// - Space: O(1)
     pub fn reverse_string(s: &mut Vec<char>) {
+        // Two pointers
         let mut left = 0;
         let mut right = s.len() - 1;
 
+        // Swap characters while left < right
         while left < right {
             (s[left], s[right]) = (s[right], s[left]);
             left += 1;
@@ -26,6 +23,8 @@ impl Solution {
         }
     }
 }
+
+// --------------------------------------------------
 
 #[cfg(test)]
 mod tests {
@@ -37,6 +36,8 @@ mod tests {
         Solution::reverse_string(&mut s);
         assert_eq!(s, vec!['o', 'l', 'l', 'e', 'h']);
     }
+
+    // --------------------------------------------------
 
     #[test]
     fn test_reverse_string_2() {

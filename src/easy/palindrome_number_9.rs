@@ -1,26 +1,15 @@
 // 9. Palindrome Number
 // https://leetcode.com/problems/palindrome-number/description/
+// Time complexity: O(log(n))
+// Space complexity: O(1)
+
+// --------------------------------------------------
 
 #![allow(dead_code)]
 
 struct Solution;
 
 impl Solution {
-    /// Determines whether an integer is a palindrome.
-    ///
-    /// A palindrome is a number that reads the same backward as forward.
-    ///
-    /// # Arguments
-    ///
-    /// * `x` - An integer to check for palindrome property.
-    ///
-    /// # Returns
-    ///
-    /// * `true` if `x` is a palindrome, `false` otherwise.
-    ///
-    /// # Complexity
-    /// - Time: O(log(n))
-    /// - Space: O(1)
     pub fn is_palindrome(mut x: i32) -> bool {
         // Return false if the number is negative or ends with a zero (but is not zero itself)
         if x < 0 || (x % 10 == 0 && x != 0) {
@@ -42,6 +31,8 @@ impl Solution {
     }
 }
 
+// --------------------------------------------------
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -51,10 +42,14 @@ mod tests {
         assert_eq!(Solution::is_palindrome(121), true);
     }
 
+    // --------------------------------------------------
+
     #[test]
     fn test_is_palindrome_2() {
         assert_eq!(Solution::is_palindrome(-121), false);
     }
+
+    // --------------------------------------------------
 
     #[test]
     fn test_is_palindrome_3() {

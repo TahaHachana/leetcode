@@ -1,25 +1,15 @@
 // 643. Maximum Average Subarray I
 // https://leetcode.com/problems/maximum-average-subarray-i/description/
+// Time complexity: O(n)
+// Space complexity: O(1)
+
+// --------------------------------------------------
 
 #![allow(dead_code)]
 
 struct Solution;
 
 impl Solution {
-    /// Finds the maximum average of any contiguous subarray of length `k` in the given array `nums`.
-    ///
-    /// # Arguments
-    ///
-    /// * `nums` - A vector of integers representing the array.
-    /// * `k` - An integer representing the length of the subarray.
-    ///
-    /// # Returns
-    ///
-    /// A floating-point number representing the maximum average of any contiguous subarray of length `k`.
-    ///
-    /// # Complexity
-    /// - Time: O(n)
-    /// - Space: O(1)
     pub fn find_max_average(nums: Vec<i32>, k: i32) -> f64 {
         // Convert k to usize for easier indexing
         let k = k as usize;
@@ -44,6 +34,8 @@ impl Solution {
     }
 }
 
+// --------------------------------------------------
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -54,6 +46,8 @@ mod tests {
         let k = 4;
         assert_eq!(Solution::find_max_average(nums, k), 12.75);
     }
+
+    // --------------------------------------------------
 
     #[test]
     fn test_find_max_average_2() {

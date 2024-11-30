@@ -1,44 +1,40 @@
 // 977. Squares of a Sorted Array
 // https://leetcode.com/problems/squares-of-a-sorted-array/description/
+// Time complexity: O(n)
+// Space complexity: O(n) when considering the output vector
+
+// --------------------------------------------------
 
 #![allow(dead_code)]
 
 struct Solution;
 
 impl Solution {
-    /// This function takes a vector of integers, squares each element, and returns a new vector
-    /// with the squared values sorted in non-decreasing order.
-    ///
-    /// # Arguments
-    ///
-    /// * `nums` - A vector of integers, which can include both negative and positive values.
-    ///
-    /// # Returns
-    ///
-    /// A vector of integers containing the squared values of the input vector, sorted in non-decreasing order.
-    ///
-    /// # Complexity
-    /// - Time: O(n)
-    /// - Space: O(n) when considering the output vector
     pub fn sorted_squares(nums: Vec<i32>) -> Vec<i32> {
         let n = nums.len();
+        // Initialize a result vector of the same length as nums with zeros
         let mut rslt = vec![0; n];
+        // Initialize two pointers
         let mut left = 0;
         let mut right = n - 1;
 
+        // Iterate from the end of the result vector to the beginning
         for i in (0..n).rev() {
+            // Compare the absolute values of the elements at the left and right pointers
             if nums[left].abs() < nums[right].abs() {
                 rslt[i] = nums[right] * nums[right];
-                right -= 1;
+                right -= 1; // Move the right pointer to the left
             } else {
                 rslt[i] = nums[left] * nums[left];
-                left += 1;
+                left += 1; // Move the left pointer to the right
             }
         }
 
         rslt
     }
 }
+
+// --------------------------------------------------
 
 #[cfg(test)]
 mod tests {
@@ -51,6 +47,8 @@ mod tests {
             vec![0, 1, 9, 16, 100]
         );
     }
+
+    // --------------------------------------------------
 
     #[test]
     fn test_sorted_squares_2() {
