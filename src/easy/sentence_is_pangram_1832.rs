@@ -33,6 +33,8 @@ mod tests {
         assert_eq!(Solution::check_if_pangram(sentence), true);
     }
 
+    // --------------------------------------------------
+
     #[test]
     fn test_check_if_pangram_2() {
         let sentence = "leetcode".to_string();
