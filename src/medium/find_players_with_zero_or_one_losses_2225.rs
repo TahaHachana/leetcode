@@ -1,7 +1,7 @@
 // 2225. Find Players With Zero or One Losses
 // https://leetcode.com/problems/find-players-with-zero-or-one-losses/description/
-// Time complexity: O(n log n)
-// Space complexity: O(n)
+// Time complexity: O(n + k)
+// Space complexity: O(k)
 
 // --------------------------------------------------
 
@@ -11,39 +11,43 @@ struct Solution;
 
 impl Solution {
     pub fn find_winners(matches: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
-        use std::collections::HashMap;
+        // Initialize a vector to count losses for each player.
+        // -1 indicates that the player has not been encountered yet.
+        let mut losses_count = vec![-1; 100001];
 
-        // HashMap to store the number of losses for each player
-        let mut losses_count = HashMap::<i32, i32>::new();
+        // Iterate through each match to update the losses count.
+        for match_ in matches {
+            let winner = match_[0] as usize;
+            let loser = match_[1] as usize;
 
-        // Iterate over each match
-        for single_match in matches {
-            // Ensure the winner is in the map with 0 losses
-            losses_count.entry(single_match[0]).or_insert(0);
+            // If the winner has not been encountered before, set their losses to 0.
+            if losses_count[winner] == -1 {
+                losses_count[winner] = 0;
+            }
 
-            // Increment the loser's loss count by 1
-            *losses_count.entry(single_match[1]).or_insert(0) += 1;
-        }
-
-        // Vectors to store players with zero and one loss
-        let mut zero_loss = Vec::<i32>::new();
-        let mut one_loss = Vec::<i32>::new();
-        
-        // Categorize players based on their loss count
-        for (player, count) in losses_count {
-            if count == 0 {
-                zero_loss.push(player);
-            } else if count == 1 {
-                one_loss.push(player);
+            // If the loser has not been encountered before, set their losses to 1.
+            // Otherwise, increment their losses count.
+            if losses_count[loser] == -1 {
+                losses_count[loser] = 1;
+            } else {
+                losses_count[loser] += 1;
             }
         }
 
-        // Sort the vectors to meet the problem's requirements
-        zero_loss.sort();
-        one_loss.sort();
+        let mut answer = vec![Vec::new(), Vec::new()];
 
-        // Return the result as a vector of vectors
-        vec![zero_loss, one_loss]
+        // Iterate through the losses_count vector to populate the answer.
+        for i in 1..100001 {
+            if losses_count[i] == 0 {
+                // Players with zero losses.
+                answer[0].push(i as i32);
+            } else if losses_count[i] == 1 {
+                // Players with exactly one loss.
+                answer[1].push(i as i32);
+            }
+        }
+
+        answer
     }
 }
 
