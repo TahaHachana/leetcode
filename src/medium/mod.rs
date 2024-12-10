@@ -1,2 +1,3 @@
 mod max_consecutive_ones_iii_1004;
 pub mod find_players_with_zero_or_one_losses_2225;
+pub mod k_radius_subarray_averages_2090;
