@@ -29,9 +29,6 @@ impl Solution {
         for i in 0..26 {
             if freq_in_pattern[i] > 0 {
                 answer = answer.min(freq_in_text[i] / freq_in_pattern[i]);
-                if answer == 0 {
-                    return 0;
-                }
             }
         }
 
